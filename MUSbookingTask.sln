@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D2509E14-0B6B-40E5-8A58-F25BE2AFB16D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A1D62F16-361C-40D4-B09F-231E1809FCD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Dal", "Order.Dal\Order.Dal.csproj", "{6EB433E0-C1E2-4B1D-B045-30E812328512}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Core", "Order.Core\Order.Core.csproj", "{CFF8618C-1256-46E1-9884-728BBBE3670F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Dal.SqlLite", "Order.Dal.SqlLite\Order.Dal.SqlLite.csproj", "{361D8030-F0C0-43D5-8134-0F23D1DA9084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musbooking.Application", "Musbooking.Application\Musbooking.Application.csproj", "{1FF06BE8-ADB4-4DFB-84DE-525D1B6D88A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musbooking.Domain", "Musbooking.Domain\Musbooking.Domain.csproj", "{66C9C4A7-4373-4F85-9272-22452D7ED441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musbooking.Unit", "Musbooking.Unit\Musbooking.Unit.csproj", "{5B0F3C49-F979-4032-B650-3093976CDDF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Musbooking.Host", "Musbooking.Host\Musbooking.Host.csproj", "{0983D9EC-A415-4C8D-8A06-0B4DC51531A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EB433E0-C1E2-4B1D-B045-30E812328512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB433E0-C1E2-4B1D-B045-30E812328512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB433E0-C1E2-4B1D-B045-30E812328512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB433E0-C1E2-4B1D-B045-30E812328512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF8618C-1256-46E1-9884-728BBBE3670F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF8618C-1256-46E1-9884-728BBBE3670F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF8618C-1256-46E1-9884-728BBBE3670F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF8618C-1256-46E1-9884-728BBBE3670F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{361D8030-F0C0-43D5-8134-0F23D1DA9084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361D8030-F0C0-43D5-8134-0F23D1DA9084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361D8030-F0C0-43D5-8134-0F23D1DA9084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361D8030-F0C0-43D5-8134-0F23D1DA9084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF06BE8-ADB4-4DFB-84DE-525D1B6D88A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF06BE8-ADB4-4DFB-84DE-525D1B6D88A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF06BE8-ADB4-4DFB-84DE-525D1B6D88A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF06BE8-ADB4-4DFB-84DE-525D1B6D88A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C9C4A7-4373-4F85-9272-22452D7ED441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C9C4A7-4373-4F85-9272-22452D7ED441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C9C4A7-4373-4F85-9272-22452D7ED441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C9C4A7-4373-4F85-9272-22452D7ED441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0F3C49-F979-4032-B650-3093976CDDF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0F3C49-F979-4032-B650-3093976CDDF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0F3C49-F979-4032-B650-3093976CDDF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0F3C49-F979-4032-B650-3093976CDDF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0983D9EC-A415-4C8D-8A06-0B4DC51531A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0983D9EC-A415-4C8D-8A06-0B4DC51531A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0983D9EC-A415-4C8D-8A06-0B4DC51531A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0983D9EC-A415-4C8D-8A06-0B4DC51531A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6EB433E0-C1E2-4B1D-B045-30E812328512} = {D2509E14-0B6B-40E5-8A58-F25BE2AFB16D}
+		{CFF8618C-1256-46E1-9884-728BBBE3670F} = {D2509E14-0B6B-40E5-8A58-F25BE2AFB16D}
+		{361D8030-F0C0-43D5-8134-0F23D1DA9084} = {D2509E14-0B6B-40E5-8A58-F25BE2AFB16D}
+		{0983D9EC-A415-4C8D-8A06-0B4DC51531A0} = {A1D62F16-361C-40D4-B09F-231E1809FCD1}
+	EndGlobalSection
+EndGlobal

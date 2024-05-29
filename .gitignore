@@ -1,0 +1,11 @@
+
+.idea/
+
+.vs/
+
+bin/
+obj/
+
+coverage-report/
+
+Nexus.Services.Unit/TestResults/Coverage/
