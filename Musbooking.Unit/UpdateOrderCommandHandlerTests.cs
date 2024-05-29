@@ -1,9 +1,9 @@
 ﻿using Moq;
+using Musbooking.Application.Commands.Order;
 using Musbooking.Application.Models.DTOs.Equipment;
+using Musbooking.Domain.Entities.Equipment;
 using Musbooking.Domain.Exceptions;
-using Order.Core.Entities.Equipment;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Order;
+using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
 
@@ -34,7 +34,7 @@ public class UpdateOrderCommandHandlerTests
             new EquipmentDto { Id = 2, Amount = 3 }
         };
         var command = new UpdateOrderCommand(orderId, description, equipmentDtos);
-        var order = new Order.Core.Entities.Order.Order { Id = orderId };
+        var order = new Musbooking.Domain.Entities.Order.Order { Id = orderId };
         _mockOrderRepository.Setup(repo => repo.GetByIdAsync(orderId, CancellationToken.None)).ReturnsAsync(order);
         _mockEquipmentRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>(), CancellationToken.None))
             .ReturnsAsync(new Equipment { Id = 1, Amount = 10, Price = 100 });
@@ -74,7 +74,7 @@ public class UpdateOrderCommandHandlerTests
         var command = new UpdateOrderCommand(orderId, description, equipmentDtos);
 
         _mockOrderRepository.Setup(repo => repo.GetByIdAsync(orderId, CancellationToken.None))
-            .ReturnsAsync((Order.Core.Entities.Order.Order)null);
+            .ReturnsAsync((Musbooking.Domain.Entities.Order.Order)null);
 
         var ex = Assert.ThrowsAsync<BadRequestExceptionWithLog>(async () =>
             await _handler.Handle(command, CancellationToken.None));
@@ -93,7 +93,7 @@ public class UpdateOrderCommandHandlerTests
             new EquipmentDto { Id = 2, Amount = 3 }
         };
         var command = new UpdateOrderCommand(orderId, description, equipmentDtos);
-        var order = new Order.Core.Entities.Order.Order { Id = orderId };
+        var order = new Musbooking.Domain.Entities.Order.Order { Id = orderId };
         _mockOrderRepository.Setup(repo => repo.GetByIdAsync(orderId, CancellationToken.None)).ReturnsAsync(order);
         _mockEquipmentRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>(), CancellationToken.None))
             .ReturnsAsync(new Equipment { Id = 1, Amount = 3, Price = 100 });

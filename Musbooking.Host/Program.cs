@@ -1,14 +1,18 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Musbooking.Application.Commands.Equipment;
 using Musbooking.Application.Requests.Order;
 using Musbooking.Application.Requests.Validators;
 using Musbooking.Host.Filters;
-using Order.Core.Contexts;
-using Order.Dal;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Equipment;
-using Order.Dal.SqlLite.Repositories;
+using Musbooking.Infrastructure.Contexts.Abstractions;
+using Musbooking.Infrastructure.Contexts.Implementation;
+using Musbooking.Infrastructure.Repositories.Abstractions;
+using Musbooking.Infrastructure.Repositories.Implementation;
 using EquipmentRequest = Musbooking.Application.Requests.Equipment.EquipmentRequest;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using Moq;
+﻿using Moq;
+using Musbooking.Application.Commands.Order;
+using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Domain.Exceptions;
-using Order.Core.Entities.OrderEquipment;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Order;
+using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
 
@@ -31,7 +30,7 @@ public class DeleteOrderCommandHandlerTests
     [TestCase(int.MinValue)]
     public async Task Handle_ShouldDeleteOrderAndRelatedEquipment(int orderId)
     {
-        var order = new Order.Core.Entities.Order.Order { Id = orderId };
+        var order = new Musbooking.Domain.Entities.Order.Order { Id = orderId };
         var orderEquipments = new List<OrderEquipment>
         {
             new OrderEquipment { OrderId = orderId, EquipmentId = 1, Quantity = 2 },
@@ -62,14 +61,15 @@ public class DeleteOrderCommandHandlerTests
     {
         _mockOrderRepository
             .Setup(repo => repo.GetByIdAsync(orderId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync((Order.Core.Entities.Order.Order)null);
+            .ReturnsAsync((Musbooking.Domain.Entities.Order.Order)null);
 
         var ex = Assert.ThrowsAsync<BadRequestExceptionWithLog>(async () =>
             await _handler.Handle(new DeleteOrderCommand(orderId), CancellationToken.None));
 
         Assert.That(ex.Message, Does.Contain("Заказ с таким Id не найден"));
         _mockOrderRepository.Verify(
-            repo => repo.DeleteAndSaveAsync(It.IsAny<Order.Core.Entities.Order.Order>(), It.IsAny<CancellationToken>()),
+            repo => repo.DeleteAndSaveAsync(It.IsAny<Musbooking.Domain.Entities.Order.Order>(),
+                It.IsAny<CancellationToken>()),
             Times.Never);
         _mockOrderEquipmentRepository.Verify(
             repo => repo.DeleteRangeAsync(It.IsAny<List<OrderEquipment>>(), It.IsAny<CancellationToken>()),

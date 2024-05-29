@@ -20,8 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Order.Core\Order.Core.csproj" />
-      <ProjectReference Include="..\Order.Dal.SqlLite\Order.Dal.SqlLite.csproj" />
+      <ProjectReference Include="..\Musbooking.Application\Musbooking.Application.csproj" />
+      <ProjectReference Include="..\Musbooking.Infrastructure\Musbooking.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

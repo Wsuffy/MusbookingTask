@@ -1,8 +1,8 @@
 using Moq;
+using Musbooking.Application.Commands.Equipment;
+using Musbooking.Domain.Entities.Equipment;
 using Musbooking.Domain.Exceptions;
-using Order.Core.Entities.Equipment;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Equipment;
+using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
 

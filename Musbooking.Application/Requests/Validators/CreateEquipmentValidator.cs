@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using Musbooking.Application.Requests.Equipment;
 
 namespace Musbooking.Application.Requests.Validators;

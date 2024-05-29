@@ -1,7 +1,7 @@
 ﻿using Moq;
+using Musbooking.Application.Commands.Order;
 using Musbooking.Domain.Exceptions;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Order;
+using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
 
@@ -36,7 +36,7 @@ public class GetOrderByIdQueryHandlerTests
     {
         _mockOrderReadRepository.Setup(repo =>
                 repo.GetAllAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<CancellationToken>()))!
-            .ReturnsAsync(new List<Order.Core.Entities.Order.Order>());
+            .ReturnsAsync(new List<Musbooking.Domain.Entities.Order.Order>());
 
         var result = _handler.Handle(new GetOrderByIdQuery(10, 1), CancellationToken.None).Result;
 
@@ -51,10 +51,10 @@ public class GetOrderByIdQueryHandlerTests
     [Test]
     public void Handle_ShouldReturnPagedResultWithOrders_WhenValidRequest()
     {
-        var orders = new List<Order.Core.Entities.Order.Order>
+        var orders = new List<Musbooking.Domain.Entities.Order.Order>
         {
-            new Order.Core.Entities.Order.Order { Id = 1, Description = "Order 1" },
-            new Order.Core.Entities.Order.Order { Id = 2, Description = "Order 2" }
+            new() { Id = 1, Description = "Order 1" },
+            new() { Id = 2, Description = "Order 2" }
         };
 
         _mockOrderReadRepository.Setup(repo =>

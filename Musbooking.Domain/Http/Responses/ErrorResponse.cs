@@ -5,7 +5,7 @@ namespace Musbooking.Domain.Http.Responses
 {
     public class ErrorResponse
     {
-        public ErrorResponse(System.Exception exception)
+        public ErrorResponse(Exception exception)
         {
             Error = ErrorMessages.UnknownServerErrorMessage;
             Details = exception.Message;

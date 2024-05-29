@@ -1,10 +1,10 @@
 ﻿using Moq;
+using Musbooking.Application.Commands.Order;
 using Musbooking.Application.Models.DTOs.Equipment;
+using Musbooking.Domain.Entities.Equipment;
+using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Domain.Exceptions;
-using Order.Core.Entities.Equipment;
-using Order.Core.Entities.OrderEquipment;
-using Order.Dal.Repositories;
-using Order.Dal.SqlLite.Order;
+using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
 
@@ -46,12 +46,12 @@ public class AddOrderCommandHandlerTests
             .Setup(repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(equipment);
 
-        var order = new Order.Core.Entities.Order.Order
+        var order = new Musbooking.Domain.Entities.Order.Order
             { Description = description, Equipments = new List<OrderEquipment>(), Price = 0 };
 
         _mockOrderRepository
             .Setup(repo =>
-                repo.AddAndSaveAsync(It.IsAny<Order.Core.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
+                repo.AddAndSaveAsync(It.IsAny<Musbooking.Domain.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
         var result = await _handler.Handle(command, CancellationToken.None);
@@ -66,7 +66,7 @@ public class AddOrderCommandHandlerTests
             repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()), Times.Once);
 
         _mockOrderRepository.Verify(
-            repo => repo.AddAndSaveAsync(It.Is<Order.Core.Entities.Order.Order>(
+            repo => repo.AddAndSaveAsync(It.Is<Musbooking.Domain.Entities.Order.Order>(
                 o => o.Description == command.Description &&
                      o.Equipments.Count == 1 &&
                      o.Equipments[0].EquipmentId == equipmentId &&
@@ -93,10 +93,11 @@ public class AddOrderCommandHandlerTests
         Assert.That(ex.Message,
             Does.Contain("Вы пытаетесь создать заказ, но не найдет equipment или же его слишком мало на складе"));
     }
-    
+
     [Test]
     [TestCase("Order 1", 1, 10, 5)]
-    public void Handle_ShouldThrowException_WhenInsufficientEquipmentAmount(string description, int equipmentId, int requestedAmount, int availableAmount)
+    public void Handle_ShouldThrowException_WhenInsufficientEquipmentAmount(string description, int equipmentId,
+        int requestedAmount, int availableAmount)
     {
         var command = new AddOrderCommand(description, new List<EquipmentDto>
         {
@@ -118,12 +119,14 @@ public class AddOrderCommandHandlerTests
         var ex = Assert.ThrowsAsync<BadRequestExceptionWithLog>(async () =>
             await _handler.Handle(command, CancellationToken.None));
 
-        Assert.That(ex.Message, Does.Contain("Вы пытаетесь создать заказ, но не найдет equipment или же его слишком мало на складе"));
+        Assert.That(ex.Message,
+            Does.Contain("Вы пытаетесь создать заказ, но не найдет equipment или же его слишком мало на складе"));
     }
-    
+
     [Test]
     [TestCase("Order test 2", 2, 1, 1)]
-    public async Task Handle_ShouldReduceEquipmentAmount_WhenOrderIsCreated(string description, int equipmentId, int requestedAmount, int availableAmount)
+    public async Task Handle_ShouldReduceEquipmentAmount_WhenOrderIsCreated(string description, int equipmentId,
+        int requestedAmount, int availableAmount)
     {
         var command = new AddOrderCommand(description, new List<EquipmentDto>
         {
@@ -143,12 +146,14 @@ public class AddOrderCommandHandlerTests
             .ReturnsAsync(equipment);
 
         _mockOrderRepository
-            .Setup(repo => repo.AddAndSaveAsync(It.IsAny<Order.Core.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
+            .Setup(repo =>
+                repo.AddAndSaveAsync(It.IsAny<Musbooking.Domain.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
         await _handler.Handle(command, CancellationToken.None);
 
-        _mockEquipmentRepository.Verify(repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()), Times.Once);
+        _mockEquipmentRepository.Verify(repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()),
+            Times.Once);
         Assert.That(equipment.Amount, Is.EqualTo(availableAmount - requestedAmount));
     }
 }

@@ -22,8 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Order.Dal.SqlLite\Order.Dal.SqlLite.csproj" />
-    <ProjectReference Include="..\Order.Dal\Order.Dal.csproj" />
     <ProjectReference Include="..\Musbooking.Application\Musbooking.Application.csproj" />
     <ProjectReference Include="..\Musbooking.Domain\Musbooking.Domain.csproj" />
   </ItemGroup>
