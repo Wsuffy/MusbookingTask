@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Musbooking.Application.Models.DTOs.Equipment;
 using Musbooking.Application.Models.DTOs.Order;
-using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Domain.Exceptions;
+using Musbooking.Infrastructure.Entities.OrderEquipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Application.Commands.Order;

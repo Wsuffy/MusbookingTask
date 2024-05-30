@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Musbooking.Domain.Entities.Equipment;
+using Musbooking.Infrastructure.Entities.Equipment;
 
 namespace Musbooking.Infrastructure.Configurations;
 

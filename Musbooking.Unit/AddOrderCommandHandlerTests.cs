@@ -1,9 +1,10 @@
 ﻿using Moq;
 using Musbooking.Application.Commands.Order;
 using Musbooking.Application.Models.DTOs.Equipment;
-using Musbooking.Domain.Entities.Equipment;
-using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Domain.Exceptions;
+using Musbooking.Infrastructure.Entities.Equipment;
+using Musbooking.Infrastructure.Entities.Order;
+using Musbooking.Infrastructure.Entities.OrderEquipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;
@@ -46,12 +47,12 @@ public class AddOrderCommandHandlerTests
             .Setup(repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(equipment);
 
-        var order = new Musbooking.Domain.Entities.Order.Order
+        var order = new Order
             { Description = description, Equipments = new List<OrderEquipment>(), Price = 0 };
 
         _mockOrderRepository
             .Setup(repo =>
-                repo.AddAndSaveAsync(It.IsAny<Musbooking.Domain.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
+                repo.AddAndSaveAsync(It.IsAny<Order>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
         var result = await _handler.Handle(command, CancellationToken.None);
@@ -66,7 +67,7 @@ public class AddOrderCommandHandlerTests
             repo => repo.GetByIdAsync(equipmentId, It.IsAny<CancellationToken>()), Times.Once);
 
         _mockOrderRepository.Verify(
-            repo => repo.AddAndSaveAsync(It.Is<Musbooking.Domain.Entities.Order.Order>(
+            repo => repo.AddAndSaveAsync(It.Is<Order>(
                 o => o.Description == command.Description &&
                      o.Equipments.Count == 1 &&
                      o.Equipments[0].EquipmentId == equipmentId &&
@@ -147,7 +148,7 @@ public class AddOrderCommandHandlerTests
 
         _mockOrderRepository
             .Setup(repo =>
-                repo.AddAndSaveAsync(It.IsAny<Musbooking.Domain.Entities.Order.Order>(), It.IsAny<CancellationToken>()))
+                repo.AddAndSaveAsync(It.IsAny<Order>(), It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
         await _handler.Handle(command, CancellationToken.None);

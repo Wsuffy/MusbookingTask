@@ -23,5 +23,5 @@
       <ProjectReference Include="..\Musbooking.Application\Musbooking.Application.csproj" />
       <ProjectReference Include="..\Musbooking.Infrastructure\Musbooking.Infrastructure.csproj" />
     </ItemGroup>
-
+    
 </Project>

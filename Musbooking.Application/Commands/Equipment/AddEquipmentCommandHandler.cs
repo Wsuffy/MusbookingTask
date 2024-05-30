@@ -21,7 +21,7 @@ public class AddEquipmentCommandHandler : IRequestHandler<AddEquipmentCommand, E
     {
         try
         {
-            var entity = new global::Musbooking.Domain.Entities.Equipment.Equipment()
+            var entity = new global::Musbooking.Infrastructure.Entities.Equipment.Equipment()
             {
                 Name = request.Name,
                 Amount = request.Amount,

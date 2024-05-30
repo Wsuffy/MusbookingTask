@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Musbooking.Domain.Entities.Equipment;
 using Musbooking.Infrastructure.Contexts.Abstractions;
+using Musbooking.Infrastructure.Entities.Equipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Infrastructure.Repositories.Implementation;

@@ -1,4 +1,4 @@
-﻿using Musbooking.Domain.Entities.OrderEquipment;
+﻿using Musbooking.Infrastructure.Entities.OrderEquipment;
 
 namespace Musbooking.Infrastructure.Repositories.Abstractions;
 

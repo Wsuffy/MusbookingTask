@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Musbooking.Infrastructure.Contexts.Implementation;
+using Musbooking.Infrastructure.Entities.Order;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Infrastructure.Repositories.Implementation;
@@ -13,13 +14,13 @@ public class OrderRepository : IOrderRepository
         _context = context;
     }
 
-    public async Task AddAndSaveAsync(Domain.Entities.Order.Order? order, CancellationToken cancellationToken)
+    public async Task AddAndSaveAsync(Order? order, CancellationToken cancellationToken)
     {
         await _context.Orders.AddAsync(order, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<Domain.Entities.Order.Order?> GetByIdAsync(int id, CancellationToken cancellationToken)
+    public async Task<Order?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
         return await _context.Orders
             .Include(e => e.Equipments)
@@ -28,12 +29,12 @@ public class OrderRepository : IOrderRepository
     }
 
 
-    public async Task UpdateAsync(Domain.Entities.Order.Order order, CancellationToken cancellationToken)
+    public async Task UpdateAsync(Order order, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
-    public async Task DeleteAndSaveAsync(Domain.Entities.Order.Order order, CancellationToken cancellationToken)
+    public async Task DeleteAndSaveAsync(Order order, CancellationToken cancellationToken)
     {
         _context.Orders.Remove(order);
         await _context.SaveChangesAsync(cancellationToken);

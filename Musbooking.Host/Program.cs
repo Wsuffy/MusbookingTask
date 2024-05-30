@@ -1,10 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Musbooking.Application.Commands.Equipment;
 using Musbooking.Application.Requests.Order;
 using Musbooking.Application.Requests.Validators;

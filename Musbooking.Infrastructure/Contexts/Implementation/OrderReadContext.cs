@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Musbooking.Domain.Entities.Equipment;
-using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Infrastructure.Configurations;
 using Musbooking.Infrastructure.Contexts.Abstractions;
+using Musbooking.Infrastructure.Entities.Equipment;
+using Musbooking.Infrastructure.Entities.Order;
+using Musbooking.Infrastructure.Entities.OrderEquipment;
 
 namespace Musbooking.Infrastructure.Contexts.Implementation;
 
@@ -10,7 +11,7 @@ public class OrderReadContext : DbContext, IOrderReadContext
 {
     public IQueryable<Equipment> Equipments => Set<Equipment>().AsNoTracking();
 
-    public IQueryable<Domain.Entities.Order.Order?> Orders => Set<Domain.Entities.Order.Order>().AsNoTracking();
+    public IQueryable<Order?> Orders => Set<Order>().AsNoTracking();
 
     public IQueryable<OrderEquipment> OrderEquipments => Set<OrderEquipment>().AsNoTracking();
 

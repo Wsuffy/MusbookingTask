@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Musbooking.Application.Models.DTOs.Equipment;
 using Musbooking.Application.Models.DTOs.Order;
-using Musbooking.Domain.Entities.OrderEquipment;
 using Musbooking.Domain.Exceptions;
+using Musbooking.Infrastructure.Entities.OrderEquipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Application.Commands.Order;
@@ -25,7 +25,7 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, OrderDto>
         await _orderRepository.BeginTransactionAsync(cancellationToken);
         try
         {
-            var order = new Musbooking.Domain.Entities.Order.Order()
+            var order = new Infrastructure.Entities.Order.Order()
             {
                 Description = request.Description,
                 Equipments = new List<OrderEquipment>()

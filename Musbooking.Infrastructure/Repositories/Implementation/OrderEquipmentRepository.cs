@@ -1,5 +1,5 @@
-﻿using Musbooking.Domain.Entities.OrderEquipment;
-using Musbooking.Infrastructure.Contexts.Abstractions;
+﻿using Musbooking.Infrastructure.Contexts.Abstractions;
+using Musbooking.Infrastructure.Entities.OrderEquipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Infrastructure.Repositories.Implementation;

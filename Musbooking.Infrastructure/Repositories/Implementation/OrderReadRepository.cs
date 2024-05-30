@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Musbooking.Infrastructure.Contexts.Abstractions;
+using Musbooking.Infrastructure.Entities.Order;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Infrastructure.Repositories.Implementation;
@@ -13,7 +14,7 @@ public class OrderReadRepository : IOrderReadRepository
         _context = context;
     }
 
-    public async Task<List<Domain.Entities.Order.Order?>> GetAllAsync(int pageNumber, int pageSize,
+    public async Task<List<Order?>> GetAllAsync(int pageNumber, int pageSize,
         CancellationToken cancellationToken)
     {
         return await _context.Orders

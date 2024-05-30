@@ -1,7 +1,7 @@
 using Moq;
 using Musbooking.Application.Commands.Equipment;
-using Musbooking.Domain.Entities.Equipment;
 using Musbooking.Domain.Exceptions;
+using Musbooking.Infrastructure.Entities.Equipment;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Test.Unit;

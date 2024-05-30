@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Musbooking.Infrastructure.Entities.Order;
 
 namespace Musbooking.Infrastructure.Configurations;
 
-public class OrderConfiguration : IEntityTypeConfiguration<Domain.Entities.Order.Order>
+public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {
-    public void Configure(EntityTypeBuilder<Domain.Entities.Order.Order> builder)
+    public void Configure(EntityTypeBuilder<Order> builder)
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Description)

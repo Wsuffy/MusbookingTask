@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Musbooking.Domain.Entities.Equipment;
+namespace Musbooking.Infrastructure.Entities.Equipment;
 
 [Table("Equipments")]
 public class Equipment
