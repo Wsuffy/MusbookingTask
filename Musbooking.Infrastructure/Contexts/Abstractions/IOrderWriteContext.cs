@@ -6,11 +6,11 @@ using Musbooking.Infrastructure.Entities.OrderEquipment;
 
 namespace Musbooking.Infrastructure.Contexts.Abstractions;
 
-public interface IOrderWriteContext : ISavableContext
+public interface IOrderWriteContext : ISavableContext, ITransactionContext
 {
     public DbSet<Equipment> Equipments { get; }
 
-    public DbSet<Order?> Orders { get; }
+    public DbSet<Order> Orders { get; }
 
     public DbSet<OrderEquipment> OrderEquipments { get; }
 }

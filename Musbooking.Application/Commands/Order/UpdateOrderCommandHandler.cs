@@ -7,7 +7,8 @@ using Musbooking.Infrastructure.Repositories.Abstractions;
 
 namespace Musbooking.Application.Commands.Order;
 
-public record UpdateOrderCommand(int OrderId, string Description, List<EquipmentDto> Equipments) : IRequest<OrderDto>;
+public sealed record UpdateOrderCommand(int OrderId, string Description, List<EquipmentDto> Equipments)
+    : IRequest<OrderDto>;
 
 public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, OrderDto>
 {

@@ -1,8 +1,4 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Musbooking.Domain.Core.Exceptions;
 using Musbooking.Domain.Extensions;
 using Musbooking.Domain.Http;
@@ -30,7 +26,7 @@ public class ExceptionFilter : ExceptionFilterAttribute
             exceptionContext.ExceptionHandled = true;
     }
 
-    private async Task<bool> ProcessException(System.Exception exception, HttpContext context)
+    private async Task<bool> ProcessException(Exception exception, HttpContext context)
     {
         switch (exception)
         {

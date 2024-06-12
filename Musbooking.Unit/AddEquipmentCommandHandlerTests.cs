@@ -38,12 +38,12 @@ public class AddEquipmentCommandHandlerTests
             Assert.That(result.Name, Is.EqualTo(command.Name));
             Assert.That(result.Amount, Is.EqualTo(command.Amount));
             Assert.That(result.Price, Is.EqualTo(command.Price));
+            _mockEquipmentRepository.Verify(
+                repo => repo.AddAsyncAndSave(
+                    It.Is<Equipment>(e =>
+                        e.Name == command.Name && e.Amount == command.Amount && e.Price == command.Price),
+                    It.IsAny<CancellationToken>()), Times.Once);
         });
-        _mockEquipmentRepository.Verify(
-            repo => repo.AddAsyncAndSave(
-                It.Is<Equipment>(e =>
-                    e.Name == command.Name && e.Amount == command.Amount && e.Price == command.Price),
-                It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Test]

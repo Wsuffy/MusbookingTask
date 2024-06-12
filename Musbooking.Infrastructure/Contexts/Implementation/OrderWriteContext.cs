@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Musbooking.Infrastructure.Configurations;
 using Musbooking.Infrastructure.Contexts.Abstractions;
 using Musbooking.Infrastructure.Entities.Equipment;
@@ -25,4 +26,13 @@ public class OrderWriteContext : DbContext, IOrderWriteContext
         modelBuilder.ApplyConfiguration(new OrderConfiguration());
         modelBuilder.ApplyConfiguration(new OrderEquipmentConfiguration());
     }
+
+    public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default) =>
+        await Database.BeginTransactionAsync(cancellationToken);
+
+    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default) =>
+        await Database.CommitTransactionAsync(cancellationToken);
+
+    public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default) =>
+        await Database.RollbackTransactionAsync(cancellationToken);
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Musbooking.Infrastructure.Contexts.Implementation;
+using Musbooking.Infrastructure.Contexts.Abstractions;
 using Musbooking.Infrastructure.Entities.Order;
 using Musbooking.Infrastructure.Repositories.Abstractions;
 
@@ -7,14 +7,15 @@ namespace Musbooking.Infrastructure.Repositories.Implementation;
 
 public class OrderRepository : IOrderRepository
 {
-    private readonly OrderWriteContext _context;
+    private readonly IOrderWriteContext _context;
 
-    public OrderRepository(OrderWriteContext context)
+    public OrderRepository(IOrderWriteContext context)
     {
         _context = context;
     }
 
-    public async Task AddAndSaveAsync(Order? order, CancellationToken cancellationToken)
+
+    public async Task AddAndSaveAsync(Order order, CancellationToken cancellationToken)
     {
         await _context.Orders.AddAsync(order, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
@@ -26,12 +27,6 @@ public class OrderRepository : IOrderRepository
             .Include(e => e.Equipments)
             .ThenInclude(oe => oe.Equipment)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-    }
-
-
-    public async Task UpdateAsync(Order order, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
     }
 
     public async Task DeleteAndSaveAsync(Order order, CancellationToken cancellationToken)
@@ -47,16 +42,16 @@ public class OrderRepository : IOrderRepository
 
     public async Task BeginTransactionAsync(CancellationToken cancellationToken)
     {
-        await _context.Database.BeginTransactionAsync(cancellationToken);
+        await _context.BeginTransactionAsync(cancellationToken);
     }
 
     public async Task CommitTransactionAsync(CancellationToken cancellationToken)
     {
-        await _context.Database.CommitTransactionAsync(cancellationToken);
+        await _context.CommitTransactionAsync(cancellationToken);
     }
 
     public async Task RollbackTransactionAsync(CancellationToken cancellationToken)
     {
-        await _context.Database.RollbackTransactionAsync(cancellationToken);
+        await _context.RollbackTransactionAsync(cancellationToken);
     }
 }

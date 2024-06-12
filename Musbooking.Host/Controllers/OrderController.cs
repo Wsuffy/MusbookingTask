@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Musbooking.Application.Commands.Equipment;
@@ -29,7 +27,6 @@ public class OrderController : ControllerBase
     {
         var entity = await _mediator.Send(new AddEquipmentCommand(request.Name, request.Amount, request.Price),
             cancellationToken);
-
         return Ok(entity);
     }
 
@@ -60,8 +57,10 @@ public class OrderController : ControllerBase
         var equipments = request.EquipmentInOrders.Select(equipmentInOrder =>
             new EquipmentDto() { Id = equipmentInOrder.Id, Amount = equipmentInOrder.Quantity }).ToList();
 
+
         var entity = await _mediator.Send(new UpdateOrderCommand(orderId, request.Description, equipments),
             cancellationToken);
+
 
         return Ok(entity);
     }
