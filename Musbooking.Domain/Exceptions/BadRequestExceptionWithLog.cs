@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using Musbooking.Domain.Core.Exceptions;
 
 namespace Musbooking.Domain.Exceptions;
 

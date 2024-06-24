@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Musbooking.Domain.Core.Exceptions;
+using Musbooking.Domain.Exceptions;
 using Musbooking.Domain.Extensions;
 using Musbooking.Domain.Http;
 using Musbooking.Domain.Http.Responses;

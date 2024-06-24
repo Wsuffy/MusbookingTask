@@ -1,8 +1,8 @@
 ﻿using FluentValidation.TestHelper;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using Musbooking.Application.Requests.Equipment;
-using Musbooking.Application.Requests.Order;
+using Musbooking.Application.Models.Requests.Equipment;
+using Musbooking.Application.Models.Requests.Order;
 using Musbooking.Application.Requests.Validators;
 
 namespace Test.Unit;

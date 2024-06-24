@@ -20,8 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Musbooking.Application\Musbooking.Application.csproj" />
-      <ProjectReference Include="..\Musbooking.Infrastructure\Musbooking.Infrastructure.csproj" />
+      <ProjectReference Include="..\Musbooking.Service.Abstractions\Musbooking.Service.Abstractions.csproj" />
+      <ProjectReference Include="..\Musbooking.Service.Implementation\Musbooking.Service.Implementation.csproj" />
     </ItemGroup>
+
     
 </Project>

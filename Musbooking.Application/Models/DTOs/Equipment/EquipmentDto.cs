@@ -8,7 +8,7 @@ public class EquipmentDto
     public decimal Price { get; set; }
 
 
-    public EquipmentDto(global::Musbooking.Infrastructure.Entities.Equipment.Equipment? entity)
+    public EquipmentDto(global::Musbooking.Domain.Entities.Equipment.Equipment? entity)
     {
         Id = entity.Id;
         Name = entity.Name;

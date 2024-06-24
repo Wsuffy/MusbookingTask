@@ -1,4 +1,3 @@
-using Musbooking.Domain.Core.Exceptions;
 using Musbooking.Domain.Exceptions;
 
 namespace Musbooking.Domain.Http.Responses

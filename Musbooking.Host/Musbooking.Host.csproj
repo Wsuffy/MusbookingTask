@@ -22,8 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Musbooking.Application\Musbooking.Application.csproj" />
-    <ProjectReference Include="..\Musbooking.Domain\Musbooking.Domain.csproj" />
+    <ProjectReference Include="..\Musbooking.Dal.Abstractions\Musbooking.Dal.Abstractions.csproj" />
+    <ProjectReference Include="..\Musbooking.Dal.Implementation\Musbooking.Dal.Implementation.csproj" />
+    <ProjectReference Include="..\Musbooking.Service.Abstractions\Musbooking.Service.Abstractions.csproj" />
+    <ProjectReference Include="..\Musbooking.Service.Implementation\Musbooking.Service.Implementation.csproj" />
   </ItemGroup>
+  
 
 </Project>

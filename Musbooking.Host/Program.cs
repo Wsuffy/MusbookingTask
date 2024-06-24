@@ -1,15 +1,15 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using Musbooking.Application.Commands.Equipment;
-using Musbooking.Application.Requests.Order;
+using Musbooking.Application.Models.Requests.Equipment;
+using Musbooking.Application.Models.Requests.Order;
 using Musbooking.Application.Requests.Validators;
+using Musbooking.Dal.Abstractions;
+using Musbooking.Dal.Implementation.Implementation;
 using Musbooking.Host.Filters;
-using Musbooking.Infrastructure.Contexts.Abstractions;
-using Musbooking.Infrastructure.Contexts.Implementation;
-using Musbooking.Infrastructure.Repositories.Abstractions;
-using Musbooking.Infrastructure.Repositories.Implementation;
-using EquipmentRequest = Musbooking.Application.Requests.Equipment.EquipmentRequest;
+using Musbooking.Service.Abstractions.Abstractions;
+using Musbooking.Service.Implementation.Commands.Equipment;
+using Musbooking.Service.Implementation.Repositories.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

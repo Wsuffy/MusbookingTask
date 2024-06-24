@@ -8,7 +8,7 @@ public class OrderDto
     public DateTime? UpdatedAt { get; set; }
     public decimal Price { get; set; }
 
-    public OrderDto(global::Musbooking.Infrastructure.Entities.Order.Order? entity)
+    public OrderDto(global::Musbooking.Domain.Entities.Order.Order? entity)
     {
         Id = entity.Id;
         Description = entity.Description;

@@ -1,11 +1,10 @@
-﻿using System.Diagnostics;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Musbooking.Application.Commands.Equipment;
-using Musbooking.Application.Commands.Order;
 using Musbooking.Application.Models.DTOs.Equipment;
-using Musbooking.Application.Requests.Order;
-using EquipmentRequest = Musbooking.Application.Requests.Equipment.EquipmentRequest;
+using Musbooking.Application.Models.Requests.Equipment;
+using Musbooking.Application.Models.Requests.Order;
+using Musbooking.Service.Implementation.Commands.Equipment;
+using Musbooking.Service.Implementation.Commands.Order;
 
 namespace Musbooking.Host.Controllers;
 

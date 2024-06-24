@@ -1,8 +1,8 @@
 ﻿using Moq;
-using Musbooking.Application.Commands.Order;
+using Musbooking.Domain.Entities.Order;
 using Musbooking.Domain.Exceptions;
-using Musbooking.Infrastructure.Entities.Order;
-using Musbooking.Infrastructure.Repositories.Abstractions;
+using Musbooking.Service.Abstractions.Abstractions;
+using Musbooking.Service.Implementation.Commands.Order;
 
 namespace Test.Unit;
 
